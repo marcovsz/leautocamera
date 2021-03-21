@@ -30,12 +30,10 @@ import com.leautolink.leautocamera.ui.view.customview.LoadingDiglog;
 import com.leautolink.leautocamera.ui.view.customview.NormalDialog;
 import com.leautolink.leautocamera.utils.Logger;
 import com.leautolink.leautocamera.utils.SpUtils;
-import com.leautolink.leautocamera.utils.StatisticsUtil;
 import com.leautolink.leautocamera.utils.WifiAdminV2;
 import com.letv.leauto.cameracmdlibrary.connect.RemoteCamHelper;
 import com.letv.leauto.cameracmdlibrary.connect.event.OtherPhoneConnectedEvent;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.umeng.message.PushAgent;
 
 import de.greenrobot.event.EventBus;
 
@@ -77,7 +75,6 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         super.onCreate(savedInstanceState);
 
         Logger.e("onCreate  : ");
-        PushAgent.getInstance(this).onAppStart();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);
         }
@@ -160,14 +157,12 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         isOnResume = true;
         isOnPause = false;
         isCurrentActivity = true;
-        StatisticsUtil.getInstance().recordActivityStart(this.getClass().getSimpleName());
     }
 
     public void onPause() {
         super.onPause();
         isOnResume = false;
         isOnPause = true;
-        StatisticsUtil.getInstance().recordActivityEnd(this.getClass().getSimpleName());
     }
 
     @Override

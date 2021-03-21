@@ -17,7 +17,6 @@ import com.leautolink.leautocamera.R;
 import com.leautolink.leautocamera.event.BaseEvent;
 import com.leautolink.leautocamera.ui.view.customview.LoadingDiglog;
 import com.leautolink.leautocamera.utils.Logger;
-import com.leautolink.leautocamera.utils.StatisticsUtil;
 
 import de.greenrobot.event.EventBus;
 
@@ -67,13 +66,11 @@ public abstract class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Logger.e(TAG,"onResume");
-        StatisticsUtil.getInstance().recordActivityStart(this.getClass().getSimpleName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        StatisticsUtil.getInstance().recordActivityEnd(this.getClass().getSimpleName());
     }
 
     @Override

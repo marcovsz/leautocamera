@@ -1,11 +1,16 @@
 package com.leautolink.leautocamera.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import com.google.android.material.appbar.AppBarLayout;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;
@@ -53,9 +58,6 @@ import com.letv.loginsdk.network.task.GetResponseTask;
 import com.letv.loginsdk.network.volley.VolleyRequest;
 import com.letv.loginsdk.network.volley.VolleyResponse;
 import com.letv.loginsdk.network.volley.toolbox.SimpleResponse;
-import com.umeng.message.IUmengRegisterCallback;
-import com.umeng.message.PushAgent;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -129,16 +131,25 @@ public class HomeActivity extends BaseFragmentActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
+        super.onSaveInstanceState(outState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(NetworkUtil.ping()) {
-            autoUpLoadDataTask();
+        if (NetworkUtil.ping()) {
+            //autoUpLoadDataTask();
         }
+
+        if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
+            requestPermissions(permissions, 1111);
+        }
+
     }
+
     /**
      * 启动自动上传数据
      */
@@ -157,11 +168,12 @@ public class HomeActivity extends BaseFragmentActivity {
                                    }
         );
     }
+
     @AfterViews
     void init() {
         //初始化推送服务
 //        initPush();
-        this.checkUpgrade();
+//        this.checkUpgrade();
         navigation_bar_left_ib.setVisibility(View.GONE);
         navigation_bar_right_ib.setVisibility(View.GONE);
         initMenu();
@@ -241,25 +253,25 @@ public class HomeActivity extends BaseFragmentActivity {
      * 初始化推送服务
      */
     private void initPush() {
-        PushAgent mPushAgent = PushAgent.getInstance(this);
-        Logger.e(TAG, "推送情况：" + mPushAgent.isEnabled());
-        //如果推送开关是开启的，那么就开启推送服务
-        if (SpUtils.getBoolean(this, "pushEnable", true)) {
-            if (!mPushAgent.isEnabled()) {
-                mPushAgent.enable(new IUmengRegisterCallback() {
-                    @Override
-                    public void onRegistered(String s) {
-                        Logger.e(TAG, "推送已开启 device_token:" + s);
-                        SpUtils.putBoolean(HomeActivity.this, "pushEnable", true);
-                    }
-                });
-            }
-        } else {
-            if (mPushAgent.isEnabled()) {
-                Logger.e(TAG, "推送已关闭");
-                mPushAgent.disable();
-            }
-        }
+//        PushAgent mPushAgent = PushAgent.getInstance(this);
+//        Logger.e(TAG, "推送情况：" + mPushAgent.isEnabled());
+//        //如果推送开关是开启的，那么就开启推送服务
+//        if (SpUtils.getBoolean(this, "pushEnable", true)) {
+//            if (!mPushAgent.isEnabled()) {
+//                mPushAgent.enable(new IUmengRegisterCallback() {
+//                    @Override
+//                    public void onRegistered(String s) {
+//                        Logger.e(TAG, "推送已开启 device_token:" + s);
+//                        SpUtils.putBoolean(HomeActivity.this, "pushEnable", true);
+//                    }
+//                });
+//            }
+//        } else {
+//            if (mPushAgent.isEnabled()) {
+//                Logger.e(TAG, "推送已关闭");
+//                mPushAgent.disable();
+//            }
+//        }
     }
 
     private void initMenu() {

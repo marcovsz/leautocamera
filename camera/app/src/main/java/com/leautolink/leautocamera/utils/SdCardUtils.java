@@ -23,40 +23,8 @@ public class SdCardUtils {
     public static String getSDCardRootPath(Context context) {
 //        1、判断SD卡的状态是否为mounted
 //        2、判断获取到的SD卡的file是否exist
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            File sdCardFile = Environment.getExternalStorageDirectory();
-            if (sdCardFile.exists()) {
-                File file = new File(sdCardFile.getAbsolutePath() + "/" + context.getPackageName());
-                if (file.exists()) {
-                    return file.getAbsolutePath();
-                } else {
-                    file.mkdirs();
-                    return file.getAbsolutePath();
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * 获取SDCard的路径---获取到SDcard下的本应用的包名路径
-     */
-    private static String getSDCardRootPath() {
-//         1、判断SD卡的状态是否为mounted
-//        2、判断获取到的SD卡的file是否exist
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            File sdCardFile = Environment.getExternalStorageDirectory();
-            if (sdCardFile.exists()) {
-                File file = new File(sdCardFile.getAbsolutePath() + "/" + "com.leautolink.leautocamera");
-                if (file.exists()) {
-                    return file.getAbsolutePath();
-                } else {
-                    file.mkdirs();
-                    return file.getAbsolutePath();
-                }
-            }
-        }
-        return null;
+        File root = context.getExternalFilesDir(null);
+        return root.toString();
     }
 
     /**
@@ -98,24 +66,6 @@ public class SdCardUtils {
     }
 
     /**
-     * 获取突发事件视频的文件路径
-     *
-     * @return
-     */
-    public static String getEMVideoPath() {
-        String mSDCardRootPath = getSDCardRootPath();
-        if (mSDCardRootPath != null) {//内存卡有问题
-            String mEMVideoPath = mSDCardRootPath + "/EVENT/M_video";
-            File mEMVideoFile = new File(mEMVideoPath);
-            if (!mEMVideoFile.exists()) {
-                mEMVideoFile.mkdirs();
-            }
-            return mEMVideoPath;
-        }
-        return null;
-    }
-
-    /**
      * 获取普通事件视频的文件路径
      *
      * @param context
@@ -123,24 +73,6 @@ public class SdCardUtils {
      */
     public static String getNMVideoPath(Context context) {
         String mSDCardRootPath = getSDCardRootPath(context);
-        if (mSDCardRootPath != null) {//内存卡有问题
-            String mNMVideoPath = mSDCardRootPath + "/NORMAL/M_video";
-            File mNMVideoFile = new File(mNMVideoPath);
-            if (!mNMVideoFile.exists()) {
-                mNMVideoFile.mkdirs();
-            }
-            return mNMVideoPath;
-        }
-        return null;
-    }
-
-    /**
-     * 获取普通事件视频的文件路径
-     *
-     * @return
-     */
-    public static String getNMVideoPath() {
-        String mSDCardRootPath = getSDCardRootPath();
         if (mSDCardRootPath != null) {//内存卡有问题
             String mNMVideoPath = mSDCardRootPath + "/NORMAL/M_video";
             File mNMVideoFile = new File(mNMVideoPath);
@@ -171,23 +103,6 @@ public class SdCardUtils {
         return null;
     }
 
-    /**
-     * 获取图片的文件路径
-     *
-     * @return
-     */
-    public static String getPhotoPath() {
-        String mSDCardRootPath = getSDCardRootPath();
-        if (mSDCardRootPath != null) {//内存卡有问题
-            String mPhotoPath = mSDCardRootPath + "/PHOTO/M_photo";
-            File mPhotoFile = new File(mPhotoPath);
-            if (!mPhotoFile.exists()) {
-                mPhotoFile.mkdirs();
-            }
-            return mPhotoPath;
-        }
-        return null;
-    }
     /**
      * 获取DATA根目录下的文件路径
      *

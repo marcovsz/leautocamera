@@ -29,12 +29,10 @@ import com.leautolink.leautocamera.ui.view.customview.LoadingDiglog;
 import com.leautolink.leautocamera.ui.view.customview.NormalDialog;
 import com.leautolink.leautocamera.utils.Logger;
 import com.leautolink.leautocamera.utils.SpUtils;
-import com.leautolink.leautocamera.utils.StatisticsUtil;
 import com.leautolink.leautocamera.utils.WifiAdminV2;
 import com.letv.leauto.cameracmdlibrary.connect.RemoteCamHelper;
 import com.letv.leauto.cameracmdlibrary.connect.event.OtherPhoneConnectedEvent;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.umeng.message.PushAgent;
 
 import de.greenrobot.event.EventBus;
 
@@ -71,7 +69,7 @@ public class BaseActivity extends Activity implements IToastSafe {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //统计应用启动数据
-        PushAgent.getInstance(this).onAppStart();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);
         }
@@ -131,12 +129,10 @@ public class BaseActivity extends Activity implements IToastSafe {
     public void onResume() {
         super.onResume();
         isCurrentActivity = true;
-        StatisticsUtil.getInstance().recordActivityStart(this.getClass().getSimpleName());
     }
 
     public void onPause() {
         super.onPause();
-        StatisticsUtil.getInstance().recordActivityEnd(this.getClass().getSimpleName());
     }
 
     @Override

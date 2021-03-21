@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -23,7 +24,6 @@ import com.leautolink.leautocamera.ui.view.scaleview.ScaleCalculator;
 import com.leautolink.leautocamera.utils.FileUtils;
 import com.leautolink.leautocamera.utils.Logger;
 import com.leautolink.leautocamera.utils.SpUtils;
-import com.leautolink.leautocamera.utils.StatisticsUtil;
 import com.leautolink.leautocamera.utils.WifiAdmin;
 import com.leautolink.leautocamera.utils.WifiAdminV2;
 import com.leautolink.leautocamera.utils.mediaplayermanager.MedIaPlayerManager;
@@ -128,9 +128,6 @@ public class LeautoCameraAppLication extends MultiDexApplication {
         new LetvLoginSdkManager().showPersonInfo(true);
 //        UmengSDK.init(this);
         ScaleCalculator.init(this.getApplicationContext());
-
-        StatisticsUtil.getInstance().init(this.getApplicationContext());
-        StatisticsUtil.getInstance().recordAppStart();
 
         MedIaPlayerManager.init(this, MedIaPlayerManager.PLAYER_TYPE_CLOUD);
 

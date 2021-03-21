@@ -16,8 +16,7 @@ import com.leautolink.leautocamera.utils.AsyncTaskUtil;
 import com.leautolink.leautocamera.utils.Logger;
 import com.leautolink.leautocamera.utils.SdCardUtils;
 import com.leautolink.leautocamera.utils.SpUtils;
-import com.umeng.message.IUmengRegisterCallback;
-import com.umeng.message.PushAgent;
+
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -50,8 +49,6 @@ public class CommonSettingsActivity extends BaseActivity implements View.OnClick
     @ViewById(R.id.siv_about_app)
     SettingItemView mSivAboutApp;
 
-    private PushAgent mPushAgent;
-
     @AfterViews
     void init() {
         initViews();
@@ -66,7 +63,6 @@ public class CommonSettingsActivity extends BaseActivity implements View.OnClick
     }
 
     private void initDatas() {
-        mPushAgent = PushAgent.getInstance(this);
         getCacheSize();
     }
 
@@ -77,23 +73,6 @@ public class CommonSettingsActivity extends BaseActivity implements View.OnClick
         mSbReceivePushMsg.setOnCheckedChangeListener(new SelectButton.OnCheckedChangeListener() {
             @Override
             public void checkedChange(boolean checked) {
-                if (checked) {
-                    if (!mPushAgent.isEnabled()) {
-                        mPushAgent.enable(new IUmengRegisterCallback() {
-                            @Override
-                            public void onRegistered(String s) {
-                                Logger.e(TAG, "推送已开启 device_token:" + s);
-                                SpUtils.putBoolean(CommonSettingsActivity.this, "pushEnable", true);
-                            }
-                        });
-                    }
-                } else {
-                    if (mPushAgent.isEnabled()) {
-                        Logger.e(TAG, "推送已关闭");
-                        mPushAgent.disable();
-                        SpUtils.putBoolean(CommonSettingsActivity.this, "pushEnable", false);
-                    }
-                }
             }
         });
         mSbCommentNotification.setOnCheckedChangeListener(new SelectButton.OnCheckedChangeListener() {

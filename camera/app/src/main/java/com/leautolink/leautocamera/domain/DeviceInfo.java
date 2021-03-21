@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.leautolink.leautocamera.utils.FirmwareUtil;
-import com.leautolink.leautocamera.utils.StatisticsUtil;
 import com.letv.leauto.cameracmdlibrary.common.Constant;
 import com.letv.leauto.cameracmdlibrary.connect.RemoteCamHelper;
 import com.letv.leauto.cameracmdlibrary.connect.model.CameraMessage;
@@ -54,15 +53,6 @@ public class DeviceInfo {
                     FirmwareUtil.saveDeviceInfo(mContext.get());
                     if(mContext.get() instanceof Activity && Constant.isSDCardPresent)
                         FirmwareUtil.checkLocalFile((Activity) mContext.get());
-
-                    StatisticsUtil.getInstance().recordConnectDevice(DeviceInfo.getInstance().getBrand(),
-                            DeviceInfo.getInstance().getModel(),
-                            DeviceInfo.getInstance().getFwVer(),
-                            DeviceInfo.getInstance().getUuid(),
-                            DeviceInfo.getInstance().getWiFiMAC(),
-                            DeviceInfo.getInstance().getBTMAC(),
-                            DeviceInfo.getInstance().getHwVer()
-                            );
                 }
             }
             @Override
