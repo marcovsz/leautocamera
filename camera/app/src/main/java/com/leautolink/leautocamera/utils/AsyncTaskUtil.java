@@ -1,7 +1,7 @@
 package com.leautolink.leautocamera.utils;
 
 import android.os.AsyncTask;
-import android.support.annotation.MainThread;
+import androidx.annotation.MainThread;
 
 /**
  * Created by tianwei on 16/6/7.

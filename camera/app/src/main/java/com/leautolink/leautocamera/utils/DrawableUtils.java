@@ -2,7 +2,7 @@ package com.leautolink.leautocamera.utils;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * Created by lixinlei on 16/3/5.

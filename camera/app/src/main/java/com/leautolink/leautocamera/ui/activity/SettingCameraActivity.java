@@ -1,7 +1,7 @@
 package com.leautolink.leautocamera.ui.activity;
 
 import android.app.ProgressDialog;
-import android.support.design.widget.AppBarLayout;
+import com.google.android.material.appbar.AppBarLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;

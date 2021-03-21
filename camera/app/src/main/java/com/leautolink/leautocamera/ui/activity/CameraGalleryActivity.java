@@ -1,7 +1,7 @@
 package com.leautolink.leautocamera.ui.activity;
 
 import android.graphics.Color;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;

@@ -1,8 +1,8 @@
 package com.leautolink.leautocamera.ui.fragment;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.reflect.TypeToken;
 import com.leautolink.leautocamera.R;

@@ -8,7 +8,7 @@
 
     <include layout="@layout/navigation_bar"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_pull_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,6 +21,6 @@
 
         </com.leautolink.leautocamera.ui.view.customview.MyListView>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

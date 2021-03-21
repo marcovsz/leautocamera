@@ -10,7 +10,7 @@
         android:id="@+id/bar_layout"
         layout="@layout/navigation_bar" />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_top"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/x450"
             android:clipChildren="false">
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp_list"
                 android:layout_width="@dimen/x360"
                 android:layout_height="@dimen/x200"

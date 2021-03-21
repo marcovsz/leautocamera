@@ -1,8 +1,7 @@
 package com.leautolink.leautocamera.ui.fragment;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.leautolink.leautocamera.R;
 import com.leautolink.leautocamera.domain.ListingInfo;

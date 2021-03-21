@@ -78,24 +78,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor  "org.androidannotations:androidannotations:4.3.1"
-    compile "org.androidannotations:androidannotations:4.3.1"
-    compile project(':cameracmdlibrary')
-    compile project(':customuilibrary')
-    compile project(':letvLoginSdkCoreLib')
-    compile project(':PushSDK')
-    compile 'com.android.support:multidex:1.0.0'
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'com.android.support:design:22.2.1'
-    compile 'com.android.support:gridlayout-v7:22.0.0'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
+    implementation "org.androidannotations:androidannotations:4.3.1"
+    implementation project(':cameracmdlibrary')
+    implementation project(':customuilibrary')
+    implementation project(':letvLoginSdkCoreLib')
+    implementation project(':PushSDK')
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.facebook.rebound:rebound:0.3.8'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+    implementation 'com.github.bumptech.glide:glide:3.6.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    implementation 'com.facebook.rebound:rebound:0.3.8'
     compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
     compile files('src/main/libs/AMap_2DMap_V2.9.0_20160525.jar')
     compile files('src/main/libs/AMap_Search_V3.3.0_20160616.jar')

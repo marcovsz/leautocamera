@@ -1,6 +1,6 @@
 package com.leautolink.leautocamera.ui.activity;
 
-import android.support.design.widget.AppBarLayout;
+import com.google.android.material.appbar.AppBarLayout;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
