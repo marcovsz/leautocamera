@@ -1,5 +1,5 @@
 # camera
-行车记录仪
+乐视行车记录仪
 
 1. 升级 targetSdk 到 30
 2. 迁移到AndroidX
