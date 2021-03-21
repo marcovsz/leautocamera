@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <translate
-        android:duration="500"
-        android:fromYDelta="100%p"
-        android:toYDelta="0" />
-
-</set><!-- From: file:/E:/CameraSourcetree/camera/letvLoginSdkCoreLib/src/main/res/anim/pip_pushup_in.xml --><!-- From: file:/E:/CameraSourcetree/camera/letvLoginSdkCoreLib/build/intermediates/bundles/debug/res/anim/pip_pushup_in.xml -->

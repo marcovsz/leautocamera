@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
-        android:drawable="@drawable/jiazai_normal_new"
-        android:fromDegrees="0"
-        android:toDegrees="+350"
-        android:pivotX="50%"
-        android:pivotY="50%"
-        >
-</animated-rotate><!-- From: file:/E:/CameraSourcetree/camera/letvLoginSdkCoreLib/src/main/res/drawable/anim_rotate_new.xml -->

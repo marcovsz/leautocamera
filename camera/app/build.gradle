@@ -1,25 +1,36 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 def AAVersion = '3.3.2'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 30
+    buildToolsVersion "23.0.3"
     sourceSets.main.jni.srcDirs = []
     defaultConfig {
         applicationId "com.leautolink.leautocamera"
         minSdkVersion 18
-        targetSdkVersion 22
-        versionCode 2030
-        versionName "2.0.3"
+        targetSdkVersion 30
+        versionCode 1000005
+        versionName "5.0.0"
         multiDexEnabled true
         ndk {
             moduleName "libvideoutil"
             ldLibs "log", "z", "m", "jnigraphics", "android"
             abiFilters "armeabi", "armeabi-v7a", "x86"
         }
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "androidManifestFile": "$projectDir/src/main/AndroidManifest.xml".toString()
+                ]
+            }
+        }
+
     }
+
+    useLibrary 'org.apache.http.legacy'
 
     dexOptions {
         incremental false
@@ -62,41 +73,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                if (variant.buildType.name == "debug") {
-                    def apk = output.outputFile;
-//                    def newName = apk.name.replace(".apk", "_" + defaultConfig.versionName + ".apk");
-                    def newName = "LeDashCam_" + defaultConfig.versionName + ".apk";
-//                    newName = newName
-//                            .replace(variant.buildType.name, "develop")
-//                            .replace(project.name, "LeDashCam");
 
-                    if (output.zipAlign) {
-                        output.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
-
-                    } else {
-                        output.outputFile = new File(apk.parentFile, newName);
-                    }
-                } else {
-                    def apk = output.outputFile;
-                    def newName = "LeDashCam_" + defaultConfig.versionName + "player_21.apk";
-                    if (output.zipAlign) {
-                        output.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
-
-                    } else {
-                        output.outputFile = new File(apk.parentFile, newName);
-                    }
-                }
-            }
-        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    apt "org.androidannotations:androidannotations:$AAVersion"
-    compile "org.androidannotations:androidannotations:$AAVersion"
+    annotationProcessor  "org.androidannotations:androidannotations:4.3.1"
+    compile "org.androidannotations:androidannotations:4.3.1"
     compile project(':cameracmdlibrary')
     compile project(':customuilibrary')
     compile project(':letvLoginSdkCoreLib')
@@ -124,24 +108,4 @@ dependencies {
     compile files('src/main/libs/1.6_componentplayer.jar')
 }
 // hook the dex task for some additional parameters
-afterEvaluate {
-    tasks.matching {
-        it.name.startsWith('dex')
-    }.each { dx ->
-        if (project.android.defaultConfig.multiDexEnabled) {
-            if (dx.additionalParameters == null) {
-                dx.additionalParameters = []
-            }
-            dx.additionalParameters += '--minimal-main-dex'
-            // for test multidex dex , here set max idx 10000, this apk total methods is about 22251.
-            dx.additionalParameters += '--set-max-idx-number=48000'
-            dx.additionalParameters += '--multi-dex'
-        }
-    }
-}
 
-apt {
-    arguments {
-        androidManifestFile 'app/src/main/AndroidManifest.xml'
-    }
-}

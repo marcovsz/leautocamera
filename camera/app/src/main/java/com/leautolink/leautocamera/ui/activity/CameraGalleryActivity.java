@@ -681,7 +681,7 @@ public class CameraGalleryActivity extends BaseFragmentActivity implements View.
     }
 
     @UiThread
-    void showConfirmDialog(final String text, final SettingFragment.OnDialogConfirmListener listener) {
+    public void showConfirmDialog(final String text, final SettingFragment.OnDialogConfirmListener listener) {
         if (alertDialog2 == null) {
             alertDialog2 = new MaterialDialog(this);
             alertDialog2.setTitle(getString(R.string.base_activity_diglog_tip))
