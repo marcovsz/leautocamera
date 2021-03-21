@@ -136,11 +136,11 @@ public class LeautoCameraAppLication extends MultiDexApplication {
 
         boolean isMainProcess = this.getPackageName().equals(DeviceUtils.getProcessName(this, android.os.Process.myPid()));
         if (isMainProcess) {
-            wifiAdmin = new WifiAdminV2(getApplicationContext());
-//            IntentFilter filter = new IntentFilter();
-//            filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
-//            filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-//            registerReceiver(receiver, filter);
+            wifiAdmin = new WifiAdminV2(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+            filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+            registerReceiver(receiver, filter);
             String ssid = SpUtils.getInstance(this).getStringValue(Constant.WIFI_SSID);
             if (!TextUtils.isEmpty(ssid)) {
                 wifiAdmin.forget(ssid);
@@ -220,6 +220,12 @@ public class LeautoCameraAppLication extends MultiDexApplication {
             if (action.equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
                 NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
                 wifiInfo = (WifiInfo) intent.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
+
+
+                WifiManager wifiManager = (WifiManager) context.getApplicationContext()
+                        .getSystemService(WIFI_SERVICE);
+                wifiInfo = wifiManager.getConnectionInfo();
+
                 detailedState = info.getDetailedState();
                 if (detailedState == NetworkInfo.DetailedState.DISCONNECTED) {
                     Logger.e("=====>>Network DISCONNECTED!<<=====");

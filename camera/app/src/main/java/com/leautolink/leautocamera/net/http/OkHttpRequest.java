@@ -631,7 +631,7 @@ public class OkHttpRequest {
                                               FileOutputStream fos = new FileOutputStream(targetFile.getAbsolutePath() + "/" + fileName);
                                               Logger.i(TAG, "文件存储：" + targetFile.getAbsolutePath() + "/" + fileName);
                                               bos = new BufferedOutputStream(fos);
-                                              byte[] buffer = new byte[1024];
+                                              byte[] buffer = new byte[1024000];
                                               int len = 0;
                                               while (!isCancel && ((len = bis.read(buffer)) != -1)) {
                                                   current += len;

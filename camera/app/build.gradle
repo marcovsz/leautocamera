@@ -83,7 +83,6 @@ dependencies {
     implementation project(':cameracmdlibrary')
     implementation project(':customuilibrary')
     implementation project(':letvLoginSdkCoreLib')
-    implementation project(':PushSDK')
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.material:material:1.3.0'
@@ -100,7 +99,6 @@ dependencies {
     compile files('src/main/libs/AMap_Search_V3.3.0_20160616.jar')
     compile files('src/main/libs/gesture-imageview.jar')
     compile files('src/main/libs/protobuf-java-2.5.0.jar')
-    compile files('src/main/libs/agnes_tracker-0.9.1.jar')
     compile files('src/main/libs/android-async-http-1.4.9.jar')
     compile files('src/main/libs/httpclient-4.4.1.1.jar')
     compile files('src/main/libs/cmf-sdk-1.0.31-arm32&64.jar')
