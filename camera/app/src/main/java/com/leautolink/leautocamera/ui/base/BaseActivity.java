@@ -93,7 +93,7 @@ public class BaseActivity extends Activity implements IToastSafe {
     }
     public void onEventMainThread(NetWorkBadEvent event) {
         if (isCurrentActivity()) {
-            showToastSafe(getString(R.string.network_disable));
+        //    showToastSafe(getString(R.string.network_disable));
         }
     }
     public void onEventMainThread(OtherPhoneConnectedEvent event) {

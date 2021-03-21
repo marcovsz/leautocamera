@@ -99,7 +99,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
     }
     public void onEventMainThread(NetWorkBadEvent event) {
         if (isCurrentActivity()) {
-            showToastSafe(getString(R.string.network_disable));
+        //    showToastSafe(getString(R.string.network_disable));
         }
     }
 
