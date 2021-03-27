@@ -59,6 +59,7 @@ android {
         jumboMode = true
     }
     lintOptions {
+        ignoreWarnings true
         abortOnError false
     }
 
