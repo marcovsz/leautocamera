@@ -519,7 +519,7 @@ public class OkHttpRequest {
                 String fileName = file.getName();
                 fileBody = RequestBody.create(MediaType.parse(guessMimeType(fileName)), file);
                 builder.addPart(Headers.of("Content-Disposition",
-                                "form-data; name=\"" + fileKeyName + "\"; filename=\"" + fileName + "\""),
+                        "form-data; name=\"" + fileKeyName + "\"; filename=\"" + fileName + "\""),
                         fileBody);
             }
         } else {
@@ -598,7 +598,7 @@ public class OkHttpRequest {
                     .build();
             mCall = mClient.newCall(request);
             mCalls.add(mCall);
-            Logger.i(TAG, "-----url="+url+",targetPath="+targetPath+",fileName="+fileName);
+            Logger.i(TAG, "-----url=" + url + ",targetPath=" + targetPath + ",fileName=" + fileName);
             mCall.enqueue(new Callback() {
                               @Override
                               public void onFailure(Call call, IOException e) {
@@ -609,13 +609,13 @@ public class OkHttpRequest {
 
                               @Override
                               public void onResponse(Call call, Response response) {
-                                  Logger.i(TAG, "-----response.isSuccessful()="+response.isSuccessful());
+                                  Logger.i(TAG, "-----response.isSuccessful()=" + response.isSuccessful());
                                   if (response.isSuccessful()) {
                                       File targetFile = new File(targetPath);
                                       if (!targetFile.exists()) {
                                           targetFile.mkdirs();
                                       }
-                                      Logger.i(TAG, "-----targetFile="+targetFile);
+                                      Logger.i(TAG, "-----targetFile=" + targetFile);
                                       long total = response.body().contentLength();
                                       int current = 0;
                                       BufferedInputStream bis = null;

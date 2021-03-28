@@ -5,15 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.MacAddress;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.net.NetworkRequest;
+import android.net.NetworkSpecifier;
 import android.net.wifi.ScanResult;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.net.wifi.WifiNetworkSpecifier;
+import android.os.Build;
 import android.os.Message;
+import android.os.PatternMatcher;
 import android.os.SystemClock;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 import com.leautolink.leautocamera.R;
 import com.leautolink.leautocamera.application.LeautoCameraAppLication;
@@ -29,6 +39,7 @@ import com.letv.leauto.cameracmdlibrary.connect.event.ConnectToCameraEvent;
 import com.letv.leauto.cameracmdlibrary.connect.event.EventBusHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
@@ -110,18 +121,64 @@ public class CameraConnectionHelper {
                 this.startSession();
             } else {
                 this.mCameraWifiConfig = null;
-                if (this.mWifiAdminV2 != null) {
-                    this.mCameraWifiConfig = this.mWifiAdminV2.getWifiConfigure(ssid);
-                    if (this.mCameraWifiConfig != null && !this.mWifiAdminV2.isAuthenticateFailed(this.mCameraWifiConfig)) {
-                        Logger.i("debug_wifi", "wifi " + ssid + " alread saved in the system config, just enable");
-                        this.mWifiAdminV2.enableNetwork(this.mCameraWifiConfig);
-                        return;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                    if (this.mWifiAdminV2 != null) {
+                        this.mCameraWifiConfig = this.mWifiAdminV2.getWifiConfigure(ssid);
+                        if (this.mCameraWifiConfig != null && !this.mWifiAdminV2.isAuthenticateFailed(this.mCameraWifiConfig)) {
+                            Logger.i("debug_wifi", "wifi " + ssid + " alread saved in the system config, just enable");
+                            this.mWifiAdminV2.enableNetwork(this.mCameraWifiConfig);
+                            return;
+                        }
+                        this.mWifiAdminV2.forget(ssid);
+                        Logger.i("debug_wifi", "will connect: " + ssid + " | " + pwd);
+                        this.mCameraWifiConfig = this.mWifiAdminV2.CreateWifiInfo(ssid, pwd, 3);
+                        if (!this.mWifiAdminV2.addAndEnableNetwork(this.mCameraWifiConfig)) {
+                            Message.obtain(this.mHandler, CONNECTION_FAILED).sendToTarget();
+                        }
                     }
-                    this.mWifiAdminV2.forget(ssid);
-                    Logger.i("debug_wifi", "will connect: " + ssid + " | " + pwd);
-                    this.mCameraWifiConfig = this.mWifiAdminV2.CreateWifiInfo(ssid, pwd, 3);
-                    if (!this.mWifiAdminV2.addAndEnableNetwork(this.mCameraWifiConfig)) {
-                        Message.obtain(this.mHandler, CONNECTION_FAILED).sendToTarget();
+                } else {
+                    final NetworkSpecifier specifier =
+                            new WifiNetworkSpecifier.Builder()
+                                    .setSsid(ssid)
+                                    .setWpa2Passphrase(pwd)
+                                    .build();
+                    final NetworkRequest request =
+                            new NetworkRequest.Builder()
+                                    .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                                    .removeCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                                    .setNetworkSpecifier(specifier)
+                                    .build();
+                    final ConnectivityManager connectivityManager =
+                            (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+                        @Override
+                        public void onAvailable(@NonNull Network network) {
+                            super.onAvailable(network);
+                            startSession();
+                        }
+
+                        @Override
+                        public void onLosing(@NonNull Network network, int maxMsToLive) {
+                            super.onLosing(network, maxMsToLive);
+                        }
+
+                        @Override
+                        public void onLost(@NonNull Network network) {
+                            super.onLost(network);
+                        }
+
+                        @Override
+                        public void onUnavailable() {
+                            super.onUnavailable();
+                            if (mWifiAdminV2 != null && !mWifiAdminV2.addAndEnableNetwork(mCameraWifiConfig)) {
+                                Message.obtain(mHandler, CONNECTION_FAILED).sendToTarget();
+                            }
+                        }
+                    };
+                    try {
+                        connectivityManager.requestNetwork(request, networkCallback);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
             }
