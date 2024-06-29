@@ -28,7 +28,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent i = new Intent(context, AlarmReceiver.class);
         i.setAction("com.le.action.ALARM_CHECK");
         PendingIntent pi = PendingIntent.getBroadcast(
-                context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+                context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager)
                 context.getSystemService(Context.ALARM_SERVICE);
         if (isOn) {

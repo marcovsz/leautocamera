@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">乐视记录仪</string>
+    <string name="app_name">DriveCamLite</string>
 
     <string name="base_activity_diglog_tip">温馨提示</string>
     <string name="base_activity_diglog_confirm">确定</string>

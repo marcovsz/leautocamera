@@ -2,22 +2,16 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "29.0.2"
     sourceSets.main.jni.srcDirs = []
     defaultConfig {
-        applicationId "com.leautolink.leautocamera"
+        applicationId "com.leautolink.leautocamera.lite"
         minSdkVersion 18
-        targetSdkVersion 30
-        versionCode 1000005
-        versionName "5.0.0"
+        targetSdkVersion 33
+        versionCode 1000006
+        versionName "1.0.1"
         multiDexEnabled true
-        ndk {
-            moduleName "libvideoutil"
-            ldLibs "log", "z", "m", "jnigraphics", "android"
-            abiFilters "armeabi", "armeabi-v7a", "x86"
-        }
-
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -40,10 +34,10 @@ android {
     signingConfigs {
         release {
             //这样写就得把camera.jk文件放在项目目录
-            storeFile file("camera.jks")
-            storePassword "leautocamera"
-            keyAlias "release"
-            keyPassword "leautocamera"
+            storeFile file("../new.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
         }
     }
     packagingOptions {
@@ -95,15 +89,15 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     implementation 'com.facebook.rebound:rebound:0.3.8'
-    compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
-    compile files('src/main/libs/AMap_2DMap_V2.9.0_20160525.jar')
-    compile files('src/main/libs/AMap_Search_V3.3.0_20160616.jar')
-    compile files('src/main/libs/gesture-imageview.jar')
-    compile files('src/main/libs/protobuf-java-2.5.0.jar')
-    compile files('src/main/libs/android-async-http-1.4.9.jar')
-    compile files('src/main/libs/httpclient-4.4.1.1.jar')
-    compile files('src/main/libs/cmf-sdk-1.0.31-arm32&64.jar')
-    compile files('src/main/libs/1.6_componentplayer.jar')
+    implementation files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
+    implementation files('src/main/libs/AMap_2DMap_V2.9.0_20160525.jar')
+    implementation files('src/main/libs/AMap_Search_V3.3.0_20160616.jar')
+    implementation files('src/main/libs/gesture-imageview.jar')
+    implementation files('src/main/libs/protobuf-java-2.5.0.jar')
+    implementation files('src/main/libs/android-async-http-1.4.9.jar')
+    implementation files('src/main/libs/httpclient-4.4.1.1.jar')
+    implementation files('src/main/libs/cmf-sdk-1.0.31-arm32&64.jar')
+    implementation files('src/main/libs/1.6_componentplayer.jar')
 }
 // hook the dex task for some additional parameters
 

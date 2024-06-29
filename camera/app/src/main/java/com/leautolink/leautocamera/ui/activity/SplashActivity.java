@@ -44,30 +44,6 @@ public class SplashActivity extends BaseActivity {
      * 免责声明检测
      */
     private void checkStatementPermision() {
-        if (!SpUtils.getBoolean(this, "statement_not_show", false)) {
-            new StatementDialog.Builder(this).listener(new StatementDialog.Builder.StatementDialogListener() {
-                @Override
-                public void onOk(StatementDialog dialog, CheckBox checkBox) {
-                    if (checkBox.isChecked()) {
-                        SpUtils.putBoolean(SplashActivity.this, "statement_not_show", true);
-                    }
-                    dialog.dismiss();
-                    goDelay();
-                }
-
-                @Override
-                public void onExit(StatementDialog dialog) {
-                    dialog.dismiss();
-                    System.exit(0);
-                }
-
-                @Override
-                public void onShowStatement() {
-                    InstallGuideActivity_.intent(SplashActivity.this).type("").start();
-                }
-            }).create().show();
-        } else {
-            goDelay();
-        }
+        goDelay();
     }
 }

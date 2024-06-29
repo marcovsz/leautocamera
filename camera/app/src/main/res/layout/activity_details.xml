@@ -175,7 +175,7 @@
         android:progressDrawable="@drawable/pro_seekbar"
         android:thumbTint="@color/lite_blue"
         android:thumb="@drawable/seek_bar_btn"
-        android:secondaryProgressTint="@color/transparent"
+        android:secondaryProgressTint="@android:color/transparent"
         android:visibility="invisible"
         android:clickable="false"
         android:layout_marginTop="-9dp"

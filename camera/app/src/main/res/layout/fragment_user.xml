@@ -19,6 +19,7 @@
                 android:id="@+id/un_login"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
+                android:visibility="gone"
                 android:background="@drawable/bg_setting_fragment_top">
 
                 <LinearLayout
@@ -99,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="#000"
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -192,6 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
+                android:visibility="gone"
                 lecamera:src="@drawable/icon_lemi_community"
                 lecamera:text="@string/lemi" />
 
@@ -222,6 +225,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
+                android:visibility="gone"
                 lecamera:src="@drawable/icon_contact_us"
                 lecamera:text="@string/contact_to_us" />
 

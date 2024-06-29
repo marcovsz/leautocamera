@@ -149,6 +149,7 @@ public class PopMenu {
         mGridLayout.setColumnCount(mColumnCount);
         mGridLayout.setBackgroundColor(Color.parseColor("#f00e0e0e"));
 
+
         int hPadding = dp2px(mActivity, mHorizontalPadding);
         int vPadding = dp2px(mActivity, mVerticalPadding);
         int itemWidth = (mScreenWidth - (mColumnCount + 1) * hPadding) / mColumnCount;
@@ -197,7 +198,7 @@ public class PopMenu {
         });
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        layoutParams.bottomMargin = dp2px(mActivity, 25);
+        layoutParams.bottomMargin = dp2px(mActivity, 65);
         mAnimateLayout.addView(mCloseIv, layoutParams);
 
 //        mAnimateLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -207,6 +208,8 @@ public class PopMenu {
 //                return true;
 //            }
 //        });
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mAnimateLayout.getLayoutParams();
+        //mAnimateLayout.setPadding(0,0,0,120);
         mAnimateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

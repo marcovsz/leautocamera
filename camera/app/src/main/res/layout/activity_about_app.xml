@@ -79,6 +79,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:src="@drawable/icon_app_url" />
 
@@ -90,12 +91,14 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="40dp"
+        android:visibility="gone"
         android:src="@drawable/icon_about_app" />
 
     <TextView
         android:id="@+id/tv_argument"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_above="@id/iv_icon_about_app"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
@@ -108,6 +111,7 @@
         android:layout_alignTop="@id/iv_icon_about_app"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         android:layout_toRightOf="@id/iv_icon_about_app"
         android:orientation="vertical">
 

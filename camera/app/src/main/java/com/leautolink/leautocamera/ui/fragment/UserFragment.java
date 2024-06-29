@@ -342,18 +342,18 @@ public class UserFragment extends BaseFragment implements View.OnClickListener, 
      * 展示已登录页面
      */
     private void showHadLoginView(boolean show) {
-        if (show) {
-            mUnLogin.setVisibility(View.GONE);
-            mHadLogin.setVisibility(View.VISIBLE);
-            mTvShareCount.setVisibility(View.VISIBLE);
-            mTvLikeCount.setVisibility(View.VISIBLE);
-            inflateLoginedInfos();
-        } else {
-            mHadLogin.setVisibility(View.GONE);
-            mUnLogin.setVisibility(View.VISIBLE);
-            mTvShareCount.setVisibility(View.GONE);
-            mTvLikeCount.setVisibility(View.GONE);
-        }
+//        if (show) {
+//            mUnLogin.setVisibility(View.GONE);
+//            mHadLogin.setVisibility(View.VISIBLE);
+//            mTvShareCount.setVisibility(View.VISIBLE);
+//            mTvLikeCount.setVisibility(View.VISIBLE);
+//            inflateLoginedInfos();
+//        } else {
+//            mHadLogin.setVisibility(View.GONE);
+//            mUnLogin.setVisibility(View.VISIBLE);
+//            mTvShareCount.setVisibility(View.GONE);
+//            mTvLikeCount.setVisibility(View.GONE);
+//        }
     }
 
     /**

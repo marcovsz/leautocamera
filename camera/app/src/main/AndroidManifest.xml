@@ -87,6 +87,7 @@
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
+            android:exported="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -100,9 +101,11 @@
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ui.activity.SplashActivity_"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -111,31 +114,39 @@
         </activity>
         <activity
             android:name=".ui.activity.HomeActivity_"
+            android:exported="true"
             android:configChanges="orientation|keyboard|locale|keyboardHidden|screenSize|layoutDirection"
             android:launchMode="singleTask" />
         <activity
             android:name=".ui.activity.CameraGalleryActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.SettingCameraActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.AboutCameraActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.GalleryPreviewActivity"
+            android:exported="true"
             android:configChanges="orientation|keyboard|locale|keyboardHidden|screenSize|layoutDirection"
             android:screenOrientation="sensor" />
         <activity
             android:name=".ui.activity.SettingPasswordActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ResetPasswordActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/reset_pwd_dialog" />
         <!-- 云计算播放器 -->
         <service
             android:name="com.letvcloud.cmf.MediaService"
+            android:exported="true"
             android:process=":cde" />
 
         <!-- 乐嗨播放器 -->
@@ -152,28 +163,32 @@
         -->
         <activity
             android:name=".ui.activity.LocalGalleryActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.CameraSdInfoActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.InstallGuideActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.AboutAppActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.LiveRemindActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.LemiForumActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.TiroHelpActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.umeng.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <receiver
             android:name=".receivers.StartupReceiver"
@@ -203,55 +218,68 @@
         <activity
             android:name="com.letv.loginsdk.activity.LetvLoginActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.LetvRegisterActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.LetvRegisterPasswordActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.WebViewActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.MessageLoginActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.MessageRegisterActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.MessageAuthCodeActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.PersonalInfoActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.LetvLoginShareActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.FindPasswordWebview"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <!-- 修改密码 加登陆状态的 -->
         <activity
             android:name="com.letv.loginsdk.activity.webview.ModifyPasswordActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.ModifyNickNameActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.letv.loginsdk.activity.ChooseCountryAreaActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.NoTitleBar" />
 
 
@@ -275,50 +303,49 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
 
-        <service
-            android:name="com.letv.loginsdk.AuthenticationService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
-            </intent-filter>
 
-            <meta-data
-                android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator" />
-        </service>
 
         <activity
             android:name=".ui.activity.DiaglogActivity_"
+            android:exported="true"
             android:theme="@style/dialog" />
         <activity
             android:name=".ui.activity.DiaglogBluetoothActivity_"
+            android:exported="true"
             android:theme="@style/dialog"/>
         <activity
             android:name=".ui.activity.VideoEditActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.UploadFileActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.DetailsActivity_"
+            android:exported="true"
             android:configChanges="orientation|keyboard|locale|keyboardHidden|screenSize|layoutDirection"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".ui.activity.ShareAndUpActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ShareActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.CommonSettingsActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.BannerWebActivity_"
+            android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity android:name=".ui.activity.HighDefinitionPhotoActivity_"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent"/>
     </application>
 
